@@ -1,0 +1,382 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+ /*
+  * Import des css partiels */
+@import "partials/compass_libraries";
+@import "partials/variables";
+
+/*
+ * Mixins des propriétés utilisées plusieurs fois */
+@mixin center {
+  text-align: center;
+}
+@mixin flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.hide{
+  display:none;
+}
+strong, th{
+  font-weight: 700;
+}
+
+html{
+  width: 100%;
+  min-height: 100%;
+  font:$font;
+}
+/*
+ * Body display flex et height 100vh pour caler le footer en bas de page */
+body{
+  position: relative;
+  @include flex;
+  flex-direction: column;
+  height: 100vh;
+  color:$font-color;
+  font-size:$base-font-size;
+  overflow-x: hidden;
+}
+
+header{
+  flex: none;
+  @include center;
+  padding:10px;
+  background: #0bad93;
+  .logo{
+    height:70px;
+    /*
+     * Shorthand de la propriété background. Regroupe :
+     * - background-image
+     * - background-position
+     * - background-size
+     * - background-repeat */
+    background: url(../images/logo-short.svg) top center/70px no-repeat;
+  }
+  h1{
+    font-family: 'Roboto', sans-serif;
+    font-size:4rem;
+    text-transform: uppercase;
+  }
+}
+
+main{
+  /*
+   * Main display flex pour aligner le contenu verticalement */
+  position: relative;
+  @include flex;
+  align-items: center;
+  flex-direction:column;
+  justify-content: center;
+  flex: 1 0 auto;
+  @include center;
+  background: #0ac3a7;
+  padding:10px 0;
+  /*
+   * Style des overlayers */
+  .overlay,.overlayLost,.overlayWin{
+    @include flex;
+    justify-content: center;
+    flex-direction: column;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    padding:20px;
+    /*
+     * Animation des overlayers à l'affichage */
+    animation: opac 1s 1 forwards;
+    z-index: 99;
+  }
+  /*
+   * Style de la table des scores */
+  table{
+    width:20%;
+    margin:20px 40%;
+    caption{
+      caption-side: top;
+      @include center;
+      font-size:2.2rem;
+      font-weight: 700;
+      color:#999;
+    }
+    th,td{
+      @include center;
+      line-height: $base-line-height;
+    }
+    tr{
+      border-top:1px solid #fff;
+    }
+    tr:first-child{
+      border:none;
+    }
+  }
+  label{
+    display:block;
+    font-weight: 700;
+  }
+  /*
+   * Style d'un champ texte */
+  input[type="text"]{
+    border:none;
+    padding:5px;
+    line-height: $base-line-height;
+    border-radius:5px;
+    margin:10px 0;
+    @include center;
+  }
+}
+
+#tip-box{
+  font-size:2rem;
+}
+/*
+ * Animation du texte quand une paire est trouvée */
+.textTransition{
+  color:#ff2;
+  animation: textUp .5s 1 forwards;
+}
+
+h2{
+  font-size:2.6rem;
+}
+
+/*
+ * Style des boutons */
+input[type="submit"], button{
+  font-family: 'Roboto', sans-serif;
+  font-size:3rem;
+  color:$font-color;
+  background: #0ac3a7;
+  box-shadow: 2px 2px 2px 0px #999;
+  border:none;
+  border-radius:5px;
+  padding:7px 20px;
+  margin:10px 0;
+  text-transform: uppercase;
+  cursor:pointer;
+  &:hover{
+    background: #0bd2b3;
+  }
+}
+#pseudo{
+  border:2px solid #fff;
+  &.error{
+    border:2px solid #f00;
+  }
+}
+
+//Générateur de Sprites
+//@import "icons/*.png"; // "dossier" correspond au dossier contenant les icônes.
+//@include all-icons-sprites; // Fonction all-icons-sprites, avec comme premier paramètre "true", qui indique qu'on veut également que Compass génère les background-position.
+
+/*
+ * Positionnement des images du sprite */
+[class*="icons"] {
+  background: url('../images/cards.png') center no-repeat;
+}
+.icons01-1, .icons01-2{
+  background-position: 0 0;
+}
+.icons02-1, .icons02-2 {
+  background-position: 0 -100px;
+}
+.icons03-1, .icons03-2 {
+  background-position: 0 -200px;
+}
+.icons04-1, .icons04-2 {
+  background-position: 0 -300px;
+}
+.icons05-1, .icons05-2 {
+  background-position: 0 -400px;
+}
+.icons06-1, .icons06-2 {
+  background-position: 0 -500px;
+}
+.icons07-1, .icons07-2 {
+  background-position: 0 -600px;
+}
+.icons08-1, .icons08-2 {
+  background-position: 0 -700px;
+}
+.icons09-1, .icons09-2 {
+  background-position: 0 -800px;
+}
+.icons10-1, .icons10-2 {
+  background-position: 0 -900px;
+}
+.icons11-1, .icons11-2 {
+  background-position: 0 -1000px;
+}
+.icons12-1, .icons12-2 {
+  background-position: 0 -1100px;
+}
+.icons13-1, .icons13-2 {
+  background-position: 0 -1200px;
+}
+.icons14-1, .icons14-2 {
+  background-position: 0 -1300px;
+}
+.icons15-1, .icons15-2 {
+  background-position: 0 -1400px;
+}
+.icons16-1, .icons16-2 {
+  background-position: 0 -1500px;
+}
+.icons17-1, .icons17-2 {
+  background-position: 0 -1600px;
+}
+.icons18-1, .icons18-2 {
+  background-position: 0 -1700px;
+}
+
+/*
+ * Style de la grille du jeu */
+.game{
+  @include flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+  max-width: $max-width;
+  margin:10px auto;
+  border:4px solid #ccc;
+}
+.cardArea{
+  background-color: #aaa;
+  height: 104px;
+  width: 104px;
+  border:2px solid #ccc;
+}
+
+.progressArea, #progress{
+  width: $max-width;
+  margin:5px auto;
+}
+footer{
+  flex: none;
+  background: #000;
+  padding: 10px;
+}
+
+/*
+ * Keyframes des animations */
+@keyframes opac {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, .85);
+  }
+}
+@keyframes textUp {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(5);
+    -ms-transform: scale(5);
+    transform: scale(5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/*
+ * Styles de la version mobile (à partir d'une taille d'écran de 768 pixels) */
+@media all and (max-width:768px) {
+  header{
+    .logo{
+      height:50px;
+      background-size:50px;
+    }
+    h1{
+      font-size:3rem;
+    }
+  }
+  main{
+    table{
+      width:50%;
+      margin:20px auto;
+    }
+  }
+  h2{
+    font-size:2.2rem;
+  }
+  .game, .progressArea, #progress{
+    max-width: $max-width2;
+  }
+  [class*="icons"]{
+    background-image: url('../images/cards-responsive.png')
+  }
+  .icons01-1, .icons01-2{
+    background-position: 0 0;
+  }
+  .icons02-1, .icons02-2 {
+    background-position: 0 -75px;
+  }
+  .icons03-1, .icons03-2 {
+    background-position: 0 -150px;
+  }
+  .icons04-1, .icons04-2 {
+    background-position: 0 -225px;
+  }
+  .icons05-1, .icons05-2 {
+    background-position: 0 -300px;
+  }
+  .icons06-1, .icons06-2 {
+    background-position: 0 -375px;
+  }
+  .icons07-1, .icons07-2 {
+    background-position: 0 -450px;
+  }
+  .icons08-1, .icons08-2 {
+    background-position: 0 -525px;
+  }
+  .icons09-1, .icons09-2 {
+    background-position: 0 -600px;
+  }
+  .icons10-1, .icons10-2 {
+    background-position: 0 -675px;
+  }
+  .icons11-1, .icons11-2 {
+    background-position: 0 -750px;
+  }
+  .icons12-1, .icons12-2 {
+    background-position: 0 -825px;
+  }
+  .icons13-1, .icons13-2 {
+    background-position: 0 -900px;
+  }
+  .icons14-1, .icons14-2 {
+    background-position: 0 -975px;
+  }
+  .icons15-1, .icons15-2 {
+    background-position: 0 -1050px;
+  }
+  .icons16-1, .icons16-2 {
+    background-position: 0 -1125px;
+  }
+  .icons17-1, .icons17-2 {
+    background-position: 0 -1200px;
+  }
+  .icons18-1, .icons18-2 {
+    background-position: 0 -1275px;
+  }
+
+  .cardArea{
+    height: 79px;
+    width: 79px;
+  }
+}
